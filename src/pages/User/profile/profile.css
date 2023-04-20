@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+.userprofile{
+    font-family: 'Work Sans', sans-serif;
+   flex: 0.5;
+   margin: 0 auto;
+}
+.userprofile > h1,h3{
+    color: black;
+}
+.userprofile > p{
+    font-weight: bolder;
+    color: grey;
+}
+span{
+    color: black;
+    font-weight: bolder;
+}
+.ptable{
+    margin: 0;
+    text-align: center;
+}
+.ptable ul {
+    margin: 0;
+}
+.ptable ul li{
+    display: inline-block;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid black;
+}

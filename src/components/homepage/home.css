@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Montserrat:wght@100&family=Poppins:wght@200&display=swap');
+.home {
+   display: flex;
+   height: 100vh;
+   justify-content: center;
+   background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #07432b, #383938);
+}
+
+.navbar {
+   margin-top: 20px;
+}
+
+.navbar>a {
+   margin: 20px;
+   text-decoration: none;
+   font-family: 'IBM Plex Sans', sans-serif;
+   font-size: 50px;
+   text-decoration: bold;
+   color: rgb(8, 1, 18);
+}
+
+.navbar>a:hover {
+   color: rgb(89, 86, 86);
+   transition: 200ms color ease-in;
+}

@@ -1,0 +1,13 @@
+.fundForm{
+    flex: 0.70;
+    display: flex;
+    justify-content: center;
+    margin:0 auto ;
+}
+.textarea{
+    color: rgb(0, 0, 0);
+    margin: 10px 0;
+    width: 100%;
+}
+
+ 

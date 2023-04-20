@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+.info{
+    flex: 0.5;
+    margin: 0 auto;
+}
+.info > h3{
+    word-spacing:5px;
+    font-family: 'Work Sans', sans-serif;
+}
