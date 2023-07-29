@@ -11,7 +11,6 @@ import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
 function Fund() {
     const [projectData, setData] = useState({
-        email: localStorage.getItem("email"),
         pName: "",
         pDetails: "",
         pBudget: "",
@@ -30,7 +29,11 @@ function Fund() {
 
         if (pName && pDetails && pBudget) {
             axios.
-                post("http://localhost:5000/user/projectdata", projectData,)
+                post("http://localhost:5000/user/sendProjectData", projectData, {
+                    headers: {
+                        token: "Bearer " + localStorage.getItem('token'),
+                    }
+                })
                 .then((res) => {
                     if (res.data.statusCode == "200") {
                         toast.success("Project data saved");

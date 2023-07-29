@@ -11,26 +11,24 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import './profile.css';
 function Profile() {
-  const [projects, setProjects] = useState(null);
-  // const[data,setdata]=useState([]);
+  const [projects, setProjects] = useState([]);
   useEffect(() => {
     axios
-      .post("http://localhost:5000/user/getprojectdata",{
+      .get("http://localhost:5000/user/getUserProfile", {
         headers: {
-            token: "Bearer " + localStorage.getItem('token'),
+          token: "Bearer " + localStorage.getItem('token'),
         }
-    })
+      })
       .then((res) => {
-      setProjects(res.data.projects)
+        setProjects(res.data.projects)
       })
       .catch((err) => {
         console.log(err);
       })
   }, []);
-console.log(projects)
-
-  if(!projects){
-    return <h1>Loading... or failed idk</h1>
+  console.log(projects);
+  if (!projects) {
+    return <h1>No Data Found</h1>
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -51,12 +49,8 @@ console.log(projects)
       border: 0,
     },
   }));
-
-  // return map
   return (
     <div className="userprofile">
-      {/* <h1>Account Review</h1>
-      <h3>Profile</h3> */}
       <h2>Poject Details</h2>
       <div className='ptable'>
         <ul>
@@ -65,16 +59,16 @@ console.log(projects)
           <li>Fund</li>
           <li>Accept</li>
         </ul>
-       {
-        projects.map((project,index)=>
-        <ul>
-        <li>{project.pName}</li>
-          <li>{project.pBudget}</li>
-          <li>{project.pDetails}</li>
-          <li>Accept</li>
-        </ul>
-        )
-       }
+        {
+          projects.map((project, index) =>
+            <ul key={index}>
+              <li>{project.pName}</li>
+              <li>{project.pBudget}</li>
+              <li>{project.pDetails}</li>
+              <li>{project.pAccept ? "Acccepted":"Pending"}</li>
+            </ul>
+          )
+        }
       </div>
     </div>
   );
@@ -84,32 +78,3 @@ export default Profile;
 
 
 
-{/* <TableContainer component={Paper} sx={{ marginTop: 5 }}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="center">Project Name</StyledTableCell>
-              <StyledTableCell align="center">Your Budget</StyledTableCell>
-              <StyledTableCell align="center">Fund Status</StyledTableCell>
-              <StyledTableCell align="center">Action</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <StyledTableRow >
-              {/* <StyledTableCell align="center">{data.pName}</StyledTableCell>
-              <StyledTableCell align="center">{data.pBudget}</StyledTableCell>
-              <StyledTableCell align="center">-</StyledTableCell>
-              <StyledTableCell align="center"><DeleteIcon /></StyledTableCell> */}
-      //        { projects.map((item,index)=>
-      //        <>
-      //         <StyledTableCell align="center">{item.pName}</StyledTableCell>
-      //         <StyledTableCell align="center">{item.pBudget}</StyledTableCell>
-      //         <StyledTableCell align="center">-</StyledTableCell>
-      //         <StyledTableCell align="center"><DeleteIcon /></StyledTableCell>
-      //          <br />
-      //         </>
-      //         )}
-      //       </StyledTableRow>
-      //     </TableBody>
-      //   </Table>
-      // </TableContainer> */}

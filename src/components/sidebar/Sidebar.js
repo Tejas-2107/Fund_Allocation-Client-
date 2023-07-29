@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link, Outlet,useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import './sidebar.css';
 function Sidebar1() {
     const navigate = useNavigate();

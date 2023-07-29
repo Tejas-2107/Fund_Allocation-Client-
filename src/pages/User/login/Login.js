@@ -33,6 +33,7 @@ function Login() {
         .then((res) => {
           if (res.data.statusCode == "200") {
             localStorage.setItem("token",res.data.token);
+            console.log("token",res.data.token);
             navigate("/userdashboard");
           }
           else if (res.data.statusCode == "401") {

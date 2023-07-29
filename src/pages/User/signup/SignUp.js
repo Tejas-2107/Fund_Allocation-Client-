@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Avatar, Button, Grid } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "./signup.css";
 
 function Signup() {
-
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
   });
   useEffect(() => {
-    document.title = "login";
+    document.title = "signup";
   }, []);
 
   const handleChange = (e) => {
@@ -34,8 +35,10 @@ function Signup() {
         .post("http://localhost:5000/user/signup", user)
         .then((res) => {
           if (res.data.statusCode == "200") {
-            toast.success("Account created login to continue");
-            // navigate("/user/login");
+            setTimeout(()=>{
+              toast.success("Account created login to continue");
+            },5000)
+            navigate("/user/login");
           }
           else if (res.data.statusCode == "401") {
             toast.error("Email already exist please login");
