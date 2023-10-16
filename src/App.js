@@ -26,7 +26,7 @@ function App() {
           <Route path="login" element={<PublicRoute><Login /></PublicRoute>}></Route>
         </Route>
         <Route path="userdashboard" element={<ProtectRoute ><Dashboard /></ProtectRoute>}>
-          <Route path="/userdashboard/" element={<Info />}></Route>
+          <Route path="userdashboard" element={<Info />}></Route>
           <Route path="request-for-fund" element={<Fund />}></Route>
           <Route path="profile" element={<Profile />}></Route>
         </Route>

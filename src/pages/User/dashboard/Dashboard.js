@@ -8,7 +8,6 @@ function Dashboard() {
         <div className='dashboard'>
             <Sidebar1 />
             <Outlet />
-
         </div>
 
     );

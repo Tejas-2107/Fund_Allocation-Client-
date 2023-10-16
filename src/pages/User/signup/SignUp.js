@@ -1,10 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Avatar, Button, Grid } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./signup.css";
 
@@ -35,9 +35,9 @@ function Signup() {
         .post("http://localhost:5000/user/signup", user)
         .then((res) => {
           if (res.data.statusCode == "200") {
-            setTimeout(()=>{
+            setTimeout(() => {
               toast.success("Account created login to continue");
-            },5000)
+            }, 100)
             navigate("/user/login");
           }
           else if (res.data.statusCode == "401") {
@@ -105,8 +105,8 @@ function Signup() {
           label="Password"
           variant="outlined"
           type="password"
-          autocomplete="off"
           onChange={handleChange}
+          autoComplete="off"
           required
         />
         <Button

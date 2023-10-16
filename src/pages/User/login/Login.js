@@ -80,7 +80,6 @@ function Login() {
             type="email"
             variant="outlined"
             onChange={handleChange}
-            value={user.email}
             autocomplete="off"
             required
           />
@@ -93,6 +92,7 @@ function Login() {
             variant="outlined"
             type="password"
             onChange={handleChange}
+            autoComplete="off"
             required
           />
           <Button

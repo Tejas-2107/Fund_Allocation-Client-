@@ -49,6 +49,7 @@ function Fund() {
         else {
             toast.error("All fileds are required");
         }
+         
     }
     return (
         <div className="fundForm">
@@ -89,6 +90,7 @@ function Fund() {
                 >
                     Submit
                 </Button>
+                
                 <ToastContainer />
             </Box>
         </div>
