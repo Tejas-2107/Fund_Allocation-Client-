@@ -10,24 +10,40 @@ import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import './profile.css';
+import { useQuery } from '@tanstack/react-query';
 function Profile() {
   const [projects, setProjects] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/user/getUserProfile", {
-        headers: {
-          token: "Bearer " + localStorage.getItem('token'),
-        }
-      })
-      .then((res) => {
-        setProjects(res.data.projects)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, []);
-  console.log(projects);
-  if (!projects) {
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5000/user/getUserProfile", {
+  //       headers: {
+  //         token: "Bearer " + localStorage.getItem('token'),
+  //       }
+  //     })
+  //     .then((res) => {
+  //       setProjects(res.data.projects)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  // }, []);
+  useEffect(()=>{
+    refetch()
+  },[]);
+  const { refetch, data = [], isLoading, isFetching } = useQuery(
+    "user-profile",
+    () => axios.get("http://localhost:5000/user/getUserProfile", {
+      headers: {
+        token: "Bearer " + localStorage.getItem('token'),
+      }
+    })
+  )
+
+  console.log(data);
+  if(isLoading){
+    return <h1>loading</h1>
+  }
+  if (!data) {
     return <h1>No Data Found</h1>
   }
 
@@ -65,7 +81,7 @@ function Profile() {
               <li>{project.pName}</li>
               <li>{project.pBudget}</li>
               <li>{project.pDetails}</li>
-              <li>{project.pAccept ? "Acccepted":"Pending"}</li>
+              <li>{project.pAccept ? "Acccepted" : "Pending"}</li>
             </ul>
           )
         }

@@ -15,7 +15,7 @@ import AdminDasboard from "./pages/Admin/dashboard/AdminDashboard";
 import "./App.css";
 function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
 
       //userroute
@@ -35,7 +35,7 @@ function App() {
         <Route path="admin" element={<Login />}></Route>
         <Route path="admindashboard" element={<AdminDasboard />}></Route>
       </Routes>
-    </div>
+    </>
   );
 }
 

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './content.css';
 import url from './light.png'
 function Content() {
+    useEffect(()=>{
+        document.title = "Welcome";
+    },[]);
     return (
         <div className="content">
             <div className="text-box">
